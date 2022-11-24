@@ -46,18 +46,18 @@ jobs:
         env:
           APP_BUILD_KEY: abc-12345
             # Envs can be mapped to secrets to make the value available to commands in the step.
-            APP_SECRET_KEY: ${{ secrets.APP_SECRET_KEY }}
-            run: |
-              echo "You can see regular env vars in GH Actions logs..."
-              echo "APP_NAME is: $APP_NAME"
-              echo "APP_VERSION is: $APP_VERSION"
-              echo "APP_BUILD_KEY is: $APP_BUILD_KEY"
-              echo ""
+          APP_SECRET_KEY: ${{ secrets.APP_SECRET_KEY }}
+        run: |
+          echo "You can see regular env vars in GH Actions logs..."
+          echo "APP_NAME is: $APP_NAME"
+          echo "APP_VERSION is: $APP_VERSION"
+          echo "APP_BUILD_KEY is: $APP_BUILD_KEY"
+          echo ""
 
-              echo "...but secrets like these won't be visible!"
-              echo "APP_SECRET_KEY is: $APP_SECRET_KEY"
+          echo "...but secrets like these won't be visible!"
+          echo "APP_SECRET_KEY is: $APP_SECRET_KEY"
 
-                # Add these 2 steps after the Print envs step:
+            # Add these 2 steps after the Print envs step:
       - name: Write envfile
         uses: SpicyPizza/create-envfile@v1.3
         with:
